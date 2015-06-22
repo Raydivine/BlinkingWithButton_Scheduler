@@ -9,13 +9,18 @@
 
 void testFunc(void);
 
+int dummy(int value){
+	return value*3;
+}
+
+
 int main(void)
 {
 	LedData ledData;
 	ButtonData buttonData;
 
 	initUserButton();
-	CLK_EN();
+	//CLK_EN();
 	configureLED(LED3, PORTG);
 	configureLED(LED4, PORTG);
 	configureLED(LED5, PORTB);
