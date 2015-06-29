@@ -16,18 +16,19 @@ int dummy(int value){
 
 int main(void)
 {
+	/*
 	LedData ledData;
 	ButtonData buttonData;
-
 	initUserButton();
-	//CLK_EN();
+	CLK_EN();
 	configureLED(LED3, PORTG);
 	configureLED(LED4, PORTG);
 	configureLED(LED5, PORTB);
 	configureLED(LED6, PORTC);
 	buttonInitData(&buttonData);
 	ledInitData(&ledData);
-//	testFunc();
+ 	testFunc();*/
+
 	initSysTick();
 	taskSwitch();
 
@@ -36,8 +37,8 @@ int main(void)
     while(1)
     {
     	//updateTime();
-    	buttonSM(&buttonData);
-    	ledSM(&ledData);
+    	//buttonSM(&buttonData);
+    	//ledSM(&ledData);
     }
 }
 
