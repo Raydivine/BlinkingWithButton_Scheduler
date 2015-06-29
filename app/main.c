@@ -27,9 +27,11 @@ int main(void)
 	configureLED(LED6, PORTC);
 	buttonInitData(&buttonData);
 	ledInitData(&ledData);
+//	testFunc();
 	initSysTick();
-  
-	testFunc();
+	taskSwitch();
+
+
 
     while(1)
     {
