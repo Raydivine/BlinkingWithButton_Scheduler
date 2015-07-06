@@ -12,6 +12,12 @@ void taskOne(void){
 }
 
 void initTcb(){
+
+	mainTcb.name = "main_thread";
+	mainTcb.sp = 0;
+	taskOneTcb.name = "thread #1";
+	taskOneTcb.sp = (uint32_t)&taskOneStack[1028];
+
 	CpuContext *cc;
 	cc = (CpuContext*)(((uint32_t)&taskOneStack[1027]) - sizeof(CpuContext));
 	taskOneTcb.sp = (uint32_t)cc;
@@ -32,9 +38,4 @@ void initTcb(){
 	cc->LR =0xFEFA;
 	cc->PC =0x4444;
 	cc->xPSR =0x4444;
-
-	mainTcb.name = "main_thread";
-	mainTcb.sp = 0;
-	taskOneTcb.name = "thread #1";
-	taskOneTcb.sp = &taskOneStack[1028];
 }

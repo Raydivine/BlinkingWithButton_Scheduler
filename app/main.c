@@ -6,13 +6,11 @@
 #include "Button.h"
 #include "ButtonSM.h"
 #include "LedSM.h"
+#include "Task.h"
+
 
 void testFunc(void);
-
-int dummy(int value){
-	return value*3;
-}
-
+void taskSwitch(void);
 
 int main(void)
 {
@@ -30,9 +28,8 @@ int main(void)
  	testFunc();*/
 
 	initSysTick();
+	initTcb();
 	taskSwitch();
-
-
 
     while(1)
     {
@@ -50,3 +47,8 @@ void initSysTick()
 		while(1);
 	}
 }
+
+int dummy(int value){
+	return value*3;
+}
+
