@@ -1,7 +1,7 @@
 #include "Task.h"
 
-uint8_t taskOneStack[1028];
-uint8_t taskTwoStack[1028];
+uint8_t taskOneStack[1024];
+uint8_t taskTwoStack[1024];
 
 Tcb mainTcb;
 Tcb taskOneTcb;
@@ -19,8 +19,10 @@ void initTcb(){
 	taskOneTcb.sp = (uint32_t)&taskOneStack[1028];
 
 	CpuContext *cc;
-	cc = (CpuContext*)(((uint32_t)&taskOneStack[1027]) - sizeof(CpuContext));
+	cc = (CpuContext*)(((uint32_t)&taskOneStack[1024]) - sizeof(CpuContext));
 	taskOneTcb.sp = (uint32_t)cc;
+	cc->xPSR == 0x01000000;
+	//cc->PC =(uint32_t)taskTwoTcb;
 
 
 	cc->R4 =0x4444;

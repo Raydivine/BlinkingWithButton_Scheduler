@@ -10,7 +10,7 @@
 
 
 void testFunc(void);
-void taskSwitch(void);
+void waitForTaskSwitch(void);
 
 int main(void)
 {
@@ -29,7 +29,7 @@ int main(void)
 
 	initSysTick();
 	initTcb();
-	taskSwitch();
+	waitForTaskSwitch();
 
     while(1)
     {

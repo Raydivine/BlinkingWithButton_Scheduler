@@ -22,9 +22,9 @@ Common symbol       size              file
 
 taskTwoTcb          0xc               ..\obj\Task.o
 taskOneTcb          0xc               ..\obj\Task.o
-taskTwoStack        0x404             ..\obj\Task.o
+taskTwoStack        0x400             ..\obj\Task.o
 mainTcb             0xc               ..\obj\Task.o
-taskOneStack        0x404             ..\obj\Task.o
+taskOneStack        0x400             ..\obj\Task.o
 
 Discarded input sections
 
@@ -320,9 +320,9 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
                 0x08000660       0xa4 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__atexit.o)
                 0x08000660                __register_exitproc
  *fill*         0x08000704       0xfc 
- .text.taskSwitch
+ .text.waitForTaskSwitch
                 0x08000800      0x200 ..\obj\scheduler.o
-                0x08000800                taskSwitch
+                0x08000800                waitForTaskSwitch
                 0x08000900                SysTick_Handler
  .text.Reset_Handler
                 0x08000a00       0x50 ..\obj\startup_stm32f429xx.o
@@ -522,33 +522,33 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
                 0x10000000                _eccmram = .
                 0x10000000                . = ALIGN (0x4)
 
-.bss            0x20000440      0x848
+.bss            0x20000440      0x840
                 0x20000440                _sbss = .
                 0x20000440                __bss_start__ = _sbss
  *(.bss)
  .bss           0x20000440       0x1c c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtbegin.o
  *(.bss*)
  *(COMMON)
- COMMON         0x2000045c      0x82c ..\obj\Task.o
+ COMMON         0x2000045c      0x824 ..\obj\Task.o
                 0x2000045c                taskTwoTcb
                 0x20000468                taskOneTcb
                 0x20000474                taskTwoStack
-                0x20000878                mainTcb
-                0x20000884                taskOneStack
-                0x20000c88                . = ALIGN (0x4)
-                0x20000c88                _ebss = .
-                0x20000c88                __bss_end__ = _ebss
+                0x20000874                mainTcb
+                0x20000880                taskOneStack
+                0x20000c80                . = ALIGN (0x4)
+                0x20000c80                _ebss = .
+                0x20000c80                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000c88      0x600
-                0x20000c88                . = ALIGN (0x4)
-                0x20000c88                PROVIDE (end, .)
-                0x20000c88                PROVIDE (_end, .)
-                0x20000e88                . = (. + _Min_Heap_Size)
- *fill*         0x20000c88      0x200 
-                0x20001288                . = (. + _Min_Stack_Size)
- *fill*         0x20000e88      0x400 
-                0x20001288                . = ALIGN (0x4)
+                0x20000c80      0x600
+                0x20000c80                . = ALIGN (0x4)
+                0x20000c80                PROVIDE (end, .)
+                0x20000c80                PROVIDE (_end, .)
+                0x20000e80                . = (. + _Min_Heap_Size)
+ *fill*         0x20000c80      0x200 
+                0x20001280                . = (. + _Min_Stack_Size)
+ *fill*         0x20000e80      0x400 
+                0x20001280                . = ALIGN (0x4)
 
 /DISCARD/
  libc.a(*)
@@ -632,13 +632,13 @@ OUTPUT(Test01.elf elf32-littlearm)
  .debug_aranges
                 0x000000a8       0x20 ..\obj\main.o
 
-.debug_line     0x00000000      0x853
+.debug_line     0x00000000      0x856
  .debug_line    0x00000000      0x155 ..\obj\Task.o
  .debug_line    0x00000155      0x1d9 ..\obj\system_stm32f4xx.o
- .debug_line    0x0000032e       0xad ..\obj\scheduler.o
- .debug_line    0x000003db      0x1cc ..\obj\stm32f4xx_it.o
- .debug_line    0x000005a7       0xb7 ..\obj\startup_stm32f429xx.o
- .debug_line    0x0000065e      0x1f5 ..\obj\main.o
+ .debug_line    0x0000032e       0xb0 ..\obj\scheduler.o
+ .debug_line    0x000003de      0x1cc ..\obj\stm32f4xx_it.o
+ .debug_line    0x000005aa       0xb7 ..\obj\startup_stm32f429xx.o
+ .debug_line    0x00000661      0x1f5 ..\obj\main.o
 
 .debug_str      0x00000000      0xb0a
  .debug_str     0x00000000      0x183 ..\obj\Task.o

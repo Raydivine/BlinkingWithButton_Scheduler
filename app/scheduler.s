@@ -3,14 +3,14 @@
   .fpu softvfp
   .thumb
 
-  .global  taskSwitch
+  .global  waitForTaskSwitch
   .global  SysTick_Handler
   .extern taskOneStack
   .extern taskTwoStack
 
-  .section  .text.taskSwitch
-  .type  taskSwitch, %function
-taskSwitch:
+  .section  .text.waitForTaskSwitch
+  .type  waitForTaskSwitch, %function
+waitForTaskSwitch:
   ldr  r0, =#0x00000000
   ldr  r1, =#0x11111111
   ldr  r2, =#0x22222222
@@ -25,23 +25,27 @@ taskSwitch:
   ldr  r11, =#0xbbbbbbbb
   ldr  r12, =#0xcccccccc
   ldr   lr, =#0xdeadface
-  push  {r0}
+   push  {r0}
   b		.
   .align 8
   .type SysTick_Handler, %function
-  .equ TCB.SP  ,  4
-  .equ TCB.NAME,  8
-  .equ TCB.NEXT,  0
+
+  .equ TCB_NEXT,  0
+  .equ TCB_NAME,  4
+  .equ TCB_SP  ,  8
 
 
 SysTick_Handler:
-    stmdb 	sp!, {r4-r11}
-    push    {lr}
-    ldr     r0,  =mainTcb
-    ldr     sp,  [r0, #TCB.SP]
-    ldr     r0,  =taskOneTcb
-    ldr     sp,  [r0, #TCB.SP]
-    pop     {lr}
+    push 	{r4-r11}
+    ldr 	 r0, =mainTcb
+    movs	 r1, #0
+	add		 r1, sp
+	str 	 r1, [r0, #TCB_SP]
+	ldr 	 r0, =taskOneTcb
+	ldr 	 sp, [r1, #TCB_SP]
+	pop 	{r4-r11}
+	pop 	{r0-r3}
+	pop 	{r12}
     bx      lr
 
 // extra space
