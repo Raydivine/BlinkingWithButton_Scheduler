@@ -3,6 +3,6 @@
 #include "LinkedList.h"
 
 void removeDataFromList(LinkedList **list, void *removeData);
-void freeAndJump(LinkedList **list);
+void removeHead(LinkedList **list);
 
 #endif // LinkedListReomve_H

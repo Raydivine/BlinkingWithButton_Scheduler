@@ -10,7 +10,7 @@ struct Tcb
 {
 	Tcb	*next;
 	char *name;
-    uint32_t sp;
+  uint32_t sp;
 };
 
 typedef struct{
@@ -35,5 +35,7 @@ extern uint8_t taskOneStack[1024];
 extern uint8_t taskTwoStack[1024];
 
 void initTcb();
+void taskTwo(void);
+void taskOne(void);
 
 #endif // Task_H

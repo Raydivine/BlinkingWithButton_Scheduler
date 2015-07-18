@@ -1,14 +1,29 @@
 #include "Task.h"
+#include "LinkedList.h"
+#include "LinkedListAdd.h"
+#include "LinkedListRemove.h"
 
+LinkedList *readyQueue;
 uint8_t taskOneStack[1024];
 uint8_t taskTwoStack[1024];
 
+Tcb *runningTcb;
 Tcb mainTcb;
 Tcb taskOneTcb;
 Tcb taskTwoTcb;
 
 void taskOne(void){
-  return  ;
+  volatile int counter = 0;
+  while(1){
+    counter++;
+  }
+}
+
+void taskTwo(void){
+  volatile int counter = 0xFFFFFFFF;
+  while(1){
+    counter--;
+  }
 }
 
 void initTcb(){

@@ -8,13 +8,13 @@ void removeDataFromList(LinkedList **list, void *removeData){
     
   if(current ){
     if(current->data == removeData){
-      freeAndJump(&current);
+      removeHead(&current);
       *list = current;
       return;  
     }
     while(current->next ){ 
       if(current->next->data == removeData){
-        freeAndJump( &(current->next) );
+        removeHead( &(current->next) );
         return;
       }
       current = current->next;    
@@ -23,7 +23,7 @@ void removeDataFromList(LinkedList **list, void *removeData){
   
 }
 
-void freeAndJump(LinkedList **list){
+void removeHead(LinkedList **list){
   LinkedList *current = *list, *tail;
    
   tail = current->next;
