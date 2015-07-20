@@ -35,7 +35,6 @@ waitForTaskSwitch:
 .equ TCB_NAME,  4
 .equ TCB_SP  ,  8
 
-
 SysTick_Handler:
 //First
   	push 	{r4-r11}          //1. push all necessary register
@@ -48,7 +47,7 @@ SysTick_Handler:
 	pop 	{r4-r11}          //6. pop all pushed register
 	pop 	{r0-r3}           //
 	pop 	{r12}             //
- 	 bx     lr               //7. return from interrupt
+ 	bx      lr                //7. return from interrupt
   
 //Second
   	push  {r4-r11}          //1. push all necessary register
@@ -66,7 +65,8 @@ SysTick_Handler:
   	bl    addDataToTail     //   c) add r1 to tail ( r1 also equal r4)
   	pop   {r4-r11}          // pop all pushed register
   	bx    lr                // return from interrupt
-  
+
+
 // extra space
 //     XPSR
 //     PC
