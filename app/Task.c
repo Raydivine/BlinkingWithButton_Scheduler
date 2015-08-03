@@ -12,6 +12,9 @@ Tcb mainTcb;
 Tcb taskOneTcb;
 Tcb taskTwoTcb;
 
+CpuContext *cc = (CpuContext*)(((uint32_t)&taskOneStack[1024]) - sizeof(CpuContext));
+
+
 void taskOne(void){
   volatile int counter = 0;
   while(1){
@@ -31,14 +34,7 @@ void initTcb(){
 	mainTcb.name = "main_thread";
 	mainTcb.sp = 0;
 	taskOneTcb.name = "thread #1";
-	taskOneTcb.sp = (uint32_t)&taskOneStack[1028];
-
-	CpuContext *cc;
-	cc = (CpuContext*)(((uint32_t)&taskOneStack[1024]) - sizeof(CpuContext));
 	taskOneTcb.sp = (uint32_t)cc;
-	cc->xPSR == 0x01000000;
-	//cc->PC =(uint32_t)taskTwoTcb;
-
 
 	cc->R4 =0x4444;
 	cc->R5 =0x5555;
@@ -52,7 +48,13 @@ void initTcb(){
 	cc->R2 =0x2222;
 	cc->R3 =0x3333;
 	cc->R12 =0xCCCC;
-	cc->LR =0xFEFA;
-	cc->PC =0x4444;
-	cc->xPSR =0x4444;
+	cc->LR =0x1000;
+	cc->PC =(uint32_t)taskOne;
+	cc->xPSR =0x1200;
+
+	runningTcb = &mainTcb;
+	readyQueue = linkListNew(&taskOneTcb);
+
+
+
 }

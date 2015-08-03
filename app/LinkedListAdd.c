@@ -11,7 +11,7 @@ void addDataToTail(LinkedList **list, void *data){
     return;
   }
   
-  while (!(current->next) ){
+  while (current->next){
     current = current->next;
   }
   current->next = linkListNew(data);
