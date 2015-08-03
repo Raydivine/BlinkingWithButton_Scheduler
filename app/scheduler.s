@@ -36,6 +36,7 @@ waitForTaskSwitch:
 .equ TCB_SP  ,  8
 
 SysTick_Handler:
+/*
 //First
   	push 	{r4-r11}          //1. push all necessary register
   	ldr 	r0, =mainTcb      //2. load mainTcb
@@ -48,11 +49,11 @@ SysTick_Handler:
 	pop 	{r0-r3}           //
 	pop 	{r12}             //
  	bx      lr                //7. return from interrupt
-  
+  */
 //Second
   	push  {r4-r11}          //1. push all necessary register
   	ldr   r4, =runningTcb   //2. a)load runningTcb into r4
-  //ldr   r4, [r4]          //   b)load r4 into r4
+    ldr   r4, [r4]          //   b)load r4 into r4
   	str   sp, [r4, #TCB_SP] //3. store SP into runningTcb.sp (r4 is runningTcb)
   	push  {r7, lr}          //4. a) push r7 and lr
  	ldr   r0, =readyQueue   //   b) load readyQueue into r0(readyQueue is LinkedList)

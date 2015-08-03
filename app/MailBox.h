@@ -18,8 +18,4 @@ void mailBoxInit( MailBox *mainlBox, int size);
 void mailBoxSendMessage(MailBox *milBox, int message);
 int mailBoxGetMessage(MailBox *mailBox);
 
-
-
-
-
 #endif // MailBox_H
