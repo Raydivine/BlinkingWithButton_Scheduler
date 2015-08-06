@@ -5,7 +5,7 @@
 #include "Semaphore.h"
 
 typedef struct{
-	int *buufer;
+	int *bufer;
 	int size;
 	Semaphore sloatAvailbale;
 	Semaphore slotsUsed;

@@ -1,9 +1,10 @@
 #include "LinkedList.h"
+#include <string.h>
 
 LinkedList *linkListNew(void *data){
   LinkedList *link ;//= sizeof(LinkedList);
   link->data = data;
- // link->next = NULL;
+
 
   return link;
 }

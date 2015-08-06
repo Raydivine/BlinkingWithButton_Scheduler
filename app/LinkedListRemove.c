@@ -37,6 +37,5 @@ LinkedList *returnHead(LinkedList **list){
   tail = current->next;
   *list = tail;
 
-  current->next = NULL;
   return current;
 }

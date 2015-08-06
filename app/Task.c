@@ -33,8 +33,6 @@ void initTcb(){
 
 	mainTcb.name = "main_thread";
 	mainTcb.sp = 0;
-	taskOneTcb.name = "thread #1";
-	taskOneTcb.sp = (uint32_t)cc;
 
 	cc->R4 =0x4444;
 	cc->R5 =0x5555;
@@ -51,6 +49,9 @@ void initTcb(){
 	cc->LR =0x1000;
 	cc->PC =(uint32_t)taskOne;
 	cc->xPSR =0x1200;
+
+	taskOneTcb.name = "thread #1";
+	taskOneTcb.sp = (uint32_t)cc;
 
 	runningTcb = &mainTcb;
 	readyQueue = linkListNew(&taskOneTcb);

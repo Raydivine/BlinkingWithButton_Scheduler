@@ -36,6 +36,32 @@ waitForTaskSwitch:
 .equ TCB_SP  ,  8
 
 SysTick_Handler:
+  	push  {r4-r11}          //1. push all necessary register
+
+  	ldr   r4, =runningTcb   //2. a)load runningTcb into r4
+    ldr   r4, [r4]          //   b)load r4 contain into r4
+  	str   sp, [r4, #TCB_SP] //3. store SP into runningTcb.sp (r4 is runningTcb)
+  	push  {r7, lr}          //4. a) push r7 and lr
+
+ 	ldr   r0, =readyQueue   //   b) load readyQueue into r0(readyQueue is LinkedList)
+ 	bl    returnHead        //   c) removeHead(r0)
+ 	mov   r5, r0            //   d) r5 = r0  ( r5 is the list )
+  	ldr   sp, [r5, #TCB_SP] //5. load R5.sp into sp
+
+
+  	ldr   r1, =runningTcb   //6. load runningTcb into r5
+  	str   r0 , [r1]
+  	ldr   r0, =readyQueue
+
+
+  	mov   r1, r4            //   b) load r4 to r0
+    pop   {r7, lr}          //7. a) pop r7 and lr
+  	bl    addDataToTail     //   c) add r1 to tail ( r1 also equal r4)
+  	pop   {r4-r11}          // pop all pushed register
+  	bx    lr                // return from interrupt
+
+
+
 /*
 //First
   	push 	{r4-r11}          //1. push all necessary register
@@ -51,22 +77,6 @@ SysTick_Handler:
  	bx      lr                //7. return from interrupt
   */
 //Second
-  	push  {r4-r11}          //1. push all necessary register
-  	ldr   r4, =runningTcb   //2. a)load runningTcb into r4
- //   ldr   r4, [r4]          //   b)load r4 into r4
-  	str   sp, [r4, #TCB_SP] //3. store SP into runningTcb.sp (r4 is runningTcb)
-  	push  {r7, lr}          //4. a) push r7 and lr
- 	ldr   r0, =readyQueue   //   b) load readyQueue into r0(readyQueue is LinkedList)
- 	bl    removeHead        //   c) removeHead(r0)
- 	mov   r5, r0            //   d) r5 = r0  ( r5 is the list )
-  	ldr   sp, [r5, #TCB_SP] //5. load R5.sp into sp
-  	ldr   r5, =runningTcb   //6. load runningTcb into r5
-  	pop   {r7, lr}          //7. a) pop r7 and lr
-  	mov   r0, r4            //   b) load r4 to r0
-  	bl    addDataToTail     //   c) add r1 to tail ( r1 also equal r4)
-  	pop   {r4-r11}          // pop all pushed register
-  	bx    lr                // return from interrupt
-
 
 // extra space
 //     XPSR

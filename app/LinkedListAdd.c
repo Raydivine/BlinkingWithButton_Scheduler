@@ -1,11 +1,10 @@
 #include "LinkedList.h"
 #include "LinkedListAdd.h"
-#include <string.h>
 
 void addDataToTail(LinkedList **list, void *data){
   LinkedList *current = *list;
   
-  if(!current){
+  if(!current ){
     current = linkListNew(data);
     *list = current;
     return;
