@@ -8,6 +8,16 @@ LinkedList *linkListNew(void *data){
   return link;
 }
 
+LinkedList *linkListInit(){
+  LinkedList *link ;
+
+  return link;
+}
+
+
+
+
+
 /*
 void clearLinkList(LinkedList *link){
   LinkedList *tmp;

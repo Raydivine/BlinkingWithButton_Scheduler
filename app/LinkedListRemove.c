@@ -30,3 +30,13 @@ void removeHead(LinkedList **list){
   current = tail;
   *list = current;
 }
+
+LinkedList *returnHead(LinkedList **list){
+  LinkedList *current = *list, *tail;
+
+  tail = current->next;
+  *list = tail;
+
+  current->next = NULL;
+  return current;
+}

@@ -246,46 +246,48 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
                 0x0800025c                taskOne
                 0x08000270                taskTwo
                 0x08000284                initTcb
- .text          0x0800036c       0x1c ..\obj\LinkedList.o
+ .text          0x0800036c       0x30 ..\obj\LinkedList.o
                 0x0800036c                linkListNew
- .text          0x08000388       0x88 ..\obj\LinkedListRemove.o
-                0x08000388                removeDataFromList
-                0x080003e8                removeHead
- .text          0x08000410      0x154 ..\obj\system_stm32f4xx.o
-                0x08000410                SystemInit
-                0x0800046c                SystemCoreClockUpdate
- .text          0x08000564       0x50 ..\obj\stm32f4xx_it.o
-                0x08000564                NMI_Handler
-                0x08000570                HardFault_Handler
-                0x08000578                MemManage_Handler
-                0x08000580                BusFault_Handler
-                0x08000588                UsageFault_Handler
-                0x08000590                SVC_Handler
-                0x0800059c                DebugMon_Handler
-                0x080005a8                PendSV_Handler
- .text          0x080005b4       0xf0 ..\obj\main.o
-                0x0800064c                main
-                0x08000660                initSysTick
-                0x08000688                dummy
- .text          0x080006a4       0xc0 ..\obj\LinkedListAdd.o
-                0x080006a4                addDataToTail
-                0x080006ec                addDataToHead
-                0x08000718                addDataToMid
+                0x08000388                linkListInit
+ .text          0x0800039c       0xb8 ..\obj\LinkedListRemove.o
+                0x0800039c                removeDataFromList
+                0x080003fc                removeHead
+                0x08000424                returnHead
+ .text          0x08000454      0x154 ..\obj\system_stm32f4xx.o
+                0x08000454                SystemInit
+                0x080004b0                SystemCoreClockUpdate
+ .text          0x080005a8       0x50 ..\obj\stm32f4xx_it.o
+                0x080005a8                NMI_Handler
+                0x080005b4                HardFault_Handler
+                0x080005bc                MemManage_Handler
+                0x080005c4                BusFault_Handler
+                0x080005cc                UsageFault_Handler
+                0x080005d4                SVC_Handler
+                0x080005e0                DebugMon_Handler
+                0x080005ec                PendSV_Handler
+ .text          0x080005f8       0xf0 ..\obj\main.o
+                0x08000690                main
+                0x080006a4                initSysTick
+                0x080006cc                dummy
+ .text          0x080006e8       0xc0 ..\obj\LinkedListAdd.o
+                0x080006e8                addDataToTail
+                0x08000730                addDataToHead
+                0x0800075c                addDataToMid
  *(.text*)
  .text.__libc_init_array
-                0x08000764       0x50 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-init.o)
-                0x08000764                __libc_init_array
+                0x080007a8       0x50 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-init.o)
+                0x080007a8                __libc_init_array
  .text.startup.register_fini
-                0x080007b4       0x14 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x080007c8        0xc c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-atexit.o)
-                0x080007c8                atexit
+                0x080007f8       0x14 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x0800080c        0xc c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-atexit.o)
+                0x0800080c                atexit
  .text.__libc_fini_array
-                0x080007d4       0x2c c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-fini.o)
-                0x080007d4                __libc_fini_array
+                0x08000818       0x2c c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-fini.o)
+                0x08000818                __libc_fini_array
  .text.__register_exitproc
-                0x08000800       0xa4 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__atexit.o)
-                0x08000800                __register_exitproc
- *fill*         0x080008a4       0x5c 
+                0x08000844       0xa4 c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a(lib_a-__atexit.o)
+                0x08000844                __register_exitproc
+ *fill*         0x080008e8       0x18 
  .text.waitForTaskSwitch
                 0x08000900      0x200 ..\obj\scheduler.o
                 0x08000900                waitForTaskSwitch
@@ -576,27 +578,27 @@ LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-
 LOAD c:/program files/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/crtn.o
 OUTPUT(Test01.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x145c
+.debug_info     0x00000000     0x14c8
  .debug_info    0x00000000      0x2da ..\obj\Task.o
- .debug_info    0x000002da       0x8c ..\obj\LinkedList.o
- .debug_info    0x00000366      0x134 ..\obj\LinkedListRemove.o
- .debug_info    0x0000049a      0x4b4 ..\obj\system_stm32f4xx.o
- .debug_info    0x0000094e       0x97 ..\obj\scheduler.o
- .debug_info    0x000009e5      0x11e ..\obj\stm32f4xx_it.o
- .debug_info    0x00000b03       0x9d ..\obj\startup_stm32f429xx.o
- .debug_info    0x00000ba0      0x714 ..\obj\main.o
- .debug_info    0x000012b4      0x1a8 ..\obj\LinkedListAdd.o
+ .debug_info    0x000002da       0xb4 ..\obj\LinkedList.o
+ .debug_info    0x0000038e      0x178 ..\obj\LinkedListRemove.o
+ .debug_info    0x00000506      0x4b4 ..\obj\system_stm32f4xx.o
+ .debug_info    0x000009ba       0x97 ..\obj\scheduler.o
+ .debug_info    0x00000a51      0x11e ..\obj\stm32f4xx_it.o
+ .debug_info    0x00000b6f       0x9d ..\obj\startup_stm32f429xx.o
+ .debug_info    0x00000c0c      0x714 ..\obj\main.o
+ .debug_info    0x00001320      0x1a8 ..\obj\LinkedListAdd.o
 
-.debug_abbrev   0x00000000      0x632
+.debug_abbrev   0x00000000      0x668
  .debug_abbrev  0x00000000      0x115 ..\obj\Task.o
- .debug_abbrev  0x00000115       0x85 ..\obj\LinkedList.o
- .debug_abbrev  0x0000019a       0xb5 ..\obj\LinkedListRemove.o
- .debug_abbrev  0x0000024f       0xff ..\obj\system_stm32f4xx.o
- .debug_abbrev  0x0000034e       0x14 ..\obj\scheduler.o
- .debug_abbrev  0x00000362       0x65 ..\obj\stm32f4xx_it.o
- .debug_abbrev  0x000003c7       0x12 ..\obj\startup_stm32f429xx.o
- .debug_abbrev  0x000003d9      0x197 ..\obj\main.o
- .debug_abbrev  0x00000570       0xc2 ..\obj\LinkedListAdd.o
+ .debug_abbrev  0x00000115       0x9f ..\obj\LinkedList.o
+ .debug_abbrev  0x000001b4       0xd1 ..\obj\LinkedListRemove.o
+ .debug_abbrev  0x00000285       0xff ..\obj\system_stm32f4xx.o
+ .debug_abbrev  0x00000384       0x14 ..\obj\scheduler.o
+ .debug_abbrev  0x00000398       0x65 ..\obj\stm32f4xx_it.o
+ .debug_abbrev  0x000003fd       0x12 ..\obj\startup_stm32f429xx.o
+ .debug_abbrev  0x0000040f      0x197 ..\obj\main.o
+ .debug_abbrev  0x000005a6       0xc2 ..\obj\LinkedListAdd.o
 
 .debug_aranges  0x00000000      0x128
  .debug_aranges
@@ -618,31 +620,31 @@ OUTPUT(Test01.elf elf32-littlearm)
  .debug_aranges
                 0x00000108       0x20 ..\obj\LinkedListAdd.o
 
-.debug_line     0x00000000      0x98c
+.debug_line     0x00000000      0x996
  .debug_line    0x00000000      0x162 ..\obj\Task.o
- .debug_line    0x00000162       0x78 ..\obj\LinkedList.o
- .debug_line    0x000001da       0x90 ..\obj\LinkedListRemove.o
- .debug_line    0x0000026a      0x1c1 ..\obj\system_stm32f4xx.o
- .debug_line    0x0000042b       0x9b ..\obj\scheduler.o
- .debug_line    0x000004c6      0x1b4 ..\obj\stm32f4xx_it.o
- .debug_line    0x0000067a       0x9f ..\obj\startup_stm32f429xx.o
- .debug_line    0x00000719      0x1db ..\obj\main.o
- .debug_line    0x000008f4       0x98 ..\obj\LinkedListAdd.o
+ .debug_line    0x00000162       0x7b ..\obj\LinkedList.o
+ .debug_line    0x000001dd       0x97 ..\obj\LinkedListRemove.o
+ .debug_line    0x00000274      0x1c1 ..\obj\system_stm32f4xx.o
+ .debug_line    0x00000435       0x9b ..\obj\scheduler.o
+ .debug_line    0x000004d0      0x1b4 ..\obj\stm32f4xx_it.o
+ .debug_line    0x00000684       0x9f ..\obj\startup_stm32f429xx.o
+ .debug_line    0x00000723      0x1db ..\obj\main.o
+ .debug_line    0x000008fe       0x98 ..\obj\LinkedListAdd.o
 
-.debug_str      0x00000000      0xc03
+.debug_str      0x00000000      0xc1b
  .debug_str     0x00000000      0x1a1 ..\obj\Task.o
                                 0x1eb (size before relaxing)
- .debug_str     0x000001a1       0x49 ..\obj\LinkedList.o
-                                 0xc7 (size before relaxing)
- .debug_str     0x000001ea       0xb1 ..\obj\LinkedListRemove.o
-                                0x1c1 (size before relaxing)
- .debug_str     0x0000029b      0x20d ..\obj\system_stm32f4xx.o
+ .debug_str     0x000001a1       0x56 ..\obj\LinkedList.o
+                                 0xd4 (size before relaxing)
+ .debug_str     0x000001f7       0xbc ..\obj\LinkedListRemove.o
+                                0x1cc (size before relaxing)
+ .debug_str     0x000002b3      0x20d ..\obj\system_stm32f4xx.o
                                 0x336 (size before relaxing)
- .debug_str     0x000004a8       0xba ..\obj\stm32f4xx_it.o
+ .debug_str     0x000004c0       0xba ..\obj\stm32f4xx_it.o
                                 0x1cf (size before relaxing)
- .debug_str     0x00000562      0x628 ..\obj\main.o
+ .debug_str     0x0000057a      0x628 ..\obj\main.o
                                 0x83b (size before relaxing)
- .debug_str     0x00000b8a       0x79 ..\obj\LinkedListAdd.o
+ .debug_str     0x00000ba2       0x79 ..\obj\LinkedListAdd.o
                                 0x19b (size before relaxing)
 
 .comment        0x00000000       0x70
@@ -655,14 +657,14 @@ OUTPUT(Test01.elf elf32-littlearm)
  .comment       0x00000000       0x71 ..\obj\main.o
  .comment       0x00000000       0x71 ..\obj\LinkedListAdd.o
 
-.debug_frame    0x00000000      0x378
+.debug_frame    0x00000000      0x3c8
  .debug_frame   0x00000000       0x64 ..\obj\Task.o
- .debug_frame   0x00000064       0x38 ..\obj\LinkedList.o
- .debug_frame   0x0000009c       0x5c ..\obj\LinkedListRemove.o
- .debug_frame   0x000000f8       0x58 ..\obj\system_stm32f4xx.o
- .debug_frame   0x00000150       0xf0 ..\obj\stm32f4xx_it.o
- .debug_frame   0x00000240       0xbc ..\obj\main.o
- .debug_frame   0x000002fc       0x7c ..\obj\LinkedListAdd.o
+ .debug_frame   0x00000064       0x60 ..\obj\LinkedList.o
+ .debug_frame   0x000000c4       0x84 ..\obj\LinkedListRemove.o
+ .debug_frame   0x00000148       0x58 ..\obj\system_stm32f4xx.o
+ .debug_frame   0x000001a0       0xf0 ..\obj\stm32f4xx_it.o
+ .debug_frame   0x00000290       0xbc ..\obj\main.o
+ .debug_frame   0x0000034c       0x7c ..\obj\LinkedListAdd.o
 
 .debug_ranges   0x00000000       0x20
  .debug_ranges  0x00000000       0x20 ..\obj\startup_stm32f429xx.o
