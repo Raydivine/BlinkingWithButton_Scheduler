@@ -9,7 +9,6 @@ struct LinkedList{
 };
 
 LinkedList *linkListNew(void *data); 
-LinkedList *linkListInit();
 void clearLinkList(LinkedList *link); 
 
 #endif // LinkedList_H

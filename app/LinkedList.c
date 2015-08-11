@@ -1,31 +1,21 @@
 #include "LinkedList.h"
-#include <string.h>
+#include <stdio.h>
+#include <malloc.h>
 
 LinkedList *linkListNew(void *data){
-  LinkedList *link ;//= sizeof(LinkedList);
+  LinkedList *link;// = malloc( sizeof(LinkedList) );
   link->data = data;
-
-
-  return link;
-}
-
-LinkedList *linkListInit(){
-  LinkedList *link ;
+  link->next = NULL;
 
   return link;
 }
 
-
-
-
-
-/*
 void clearLinkList(LinkedList *link){
   LinkedList *tmp;
   
-  while (link != null){
+  while (link != NULL){
     tmp = link;
     link = link->next;
-    free(tmp);
+  //  free(tmp);
   }
-}*/
+}

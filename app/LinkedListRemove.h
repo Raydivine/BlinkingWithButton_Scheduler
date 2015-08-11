@@ -4,5 +4,7 @@
 
 void removeDataFromList(LinkedList **list, void *removeData);
 void removeHead(LinkedList **list);
+LinkedList *returnHead(LinkedList **list);
+
 
 #endif // LinkedListReomve_H
