@@ -3,8 +3,9 @@
 #include "LinkedListERR.h"
 #include <stdio.h>
 #include <malloc.h>
+#include "Task.h"
 
-void addDataToTail(LinkedList **list, void *data){
+void addDataToTail(LinkedList **list, Tcb *data){
   LinkedList *current = *list;
   
   if(current == NULL){
@@ -19,7 +20,7 @@ void addDataToTail(LinkedList **list, void *data){
   }
 }
 
-void addDataToHead(LinkedList **list, void *data){
+void addDataToHead(LinkedList **list, Tcb *data){
   LinkedList *current = *list, *newHead;
   
   newHead = linkListNew(data);
@@ -27,7 +28,7 @@ void addDataToHead(LinkedList **list, void *data){
   *list = newHead;
 }
 
-void addDataToMid(LinkedList **list, void *data, void *addAfterThis){
+void addDataToMid(LinkedList **list, Tcb *data, Tcb *addAfterThis){
   LinkedList *current = *list, *mid, *tail;
 
   while(current != NULL){ 

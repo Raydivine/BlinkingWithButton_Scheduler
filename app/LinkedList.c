@@ -1,8 +1,10 @@
 #include "LinkedList.h"
 #include <stdio.h>
 #include <malloc.h>
+#include "Task.h"
 
-LinkedList *linkListNew(void *data){
+
+LinkedList *linkListNew(Tcb *data){
   LinkedList *link;// = malloc( sizeof(LinkedList) );
   link->data = data;
   link->next = NULL;
@@ -10,12 +12,3 @@ LinkedList *linkListNew(void *data){
   return link;
 }
 
-void clearLinkList(LinkedList *link){
-  LinkedList *tmp;
-  
-  while (link != NULL){
-    tmp = link;
-    link = link->next;
-  //  free(tmp);
-  }
-}
