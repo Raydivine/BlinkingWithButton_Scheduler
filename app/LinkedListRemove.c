@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include "Task.h"
 
-void removeDataFromList(LinkedList **list, Tcb *removeData){
+void removeDataFromList(LinkedList **list, void  *removeData){
   LinkedList *current = *list;
     
   if(current != NULL){

@@ -4,7 +4,7 @@
 #include "Task.h"
 
 
-LinkedList *linkListNew(Tcb *data){
+LinkedList *linkListNew(void *data){
   LinkedList *link;// = malloc( sizeof(LinkedList) );
   link->data = data;
   link->next = NULL;

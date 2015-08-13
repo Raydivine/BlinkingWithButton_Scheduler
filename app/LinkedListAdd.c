@@ -5,7 +5,7 @@
 #include <malloc.h>
 #include "Task.h"
 
-void addDataToTail(LinkedList **list, Tcb *data){
+void addDataToTail(LinkedList **list, void *data){
   LinkedList *current = *list;
   
   if(current == NULL){
@@ -20,7 +20,7 @@ void addDataToTail(LinkedList **list, Tcb *data){
   }
 }
 
-void addDataToHead(LinkedList **list, Tcb *data){
+void addDataToHead(LinkedList **list, void *data){
   LinkedList *current = *list, *newHead;
   
   newHead = linkListNew(data);
@@ -28,7 +28,7 @@ void addDataToHead(LinkedList **list, Tcb *data){
   *list = newHead;
 }
 
-void addDataToMid(LinkedList **list, Tcb *data, Tcb *addAfterThis){
+void addDataToMid(LinkedList **list, void *data, void *addAfterThis){
   LinkedList *current = *list, *mid, *tail;
 
   while(current != NULL){ 

@@ -31,8 +31,8 @@ typedef struct{
 	uint32_t xPSR;
 } CpuContext;
 
-extern uint8_t taskOneStack[1024];
-extern uint8_t taskTwoStack[1024];
+extern uint8_t taskOneStack[1028];
+extern uint8_t taskTwoStack[1028];
 
 void initTcb();
 void taskTwo(void);

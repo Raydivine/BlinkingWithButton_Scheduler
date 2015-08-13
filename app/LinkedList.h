@@ -5,11 +5,11 @@
 typedef struct LinkedList LinkedList;
 
 struct LinkedList{
-  Tcb *data;
+  void *data;
   LinkedList *next;
 };
 
-LinkedList *linkListNew(Tcb *data);
+LinkedList *linkListNew(void *data);
 void clearLinkList(LinkedList *link); 
 
 #endif // LinkedList_H

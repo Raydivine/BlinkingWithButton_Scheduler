@@ -3,17 +3,14 @@
 #include "LinkedListAdd.h"
 #include "LinkedListRemove.h"
 
-LinkedList *readyQueue;
-uint8_t taskOneStack[1024];
-uint8_t taskTwoStack[1024];
+uint8_t taskOneStack[1028];
+uint8_t taskTwoStack[1028];
 
-Tcb *runningTcb;
 Tcb mainTcb;
 Tcb taskOneTcb;
 Tcb taskTwoTcb;
-
-CpuContext *cc = (CpuContext*)(((uint32_t)&taskOneStack[1024]) - sizeof(CpuContext));
-
+Tcb *runningTcb;
+Tcb *readyQueue;
 
 void taskOne(void){
   volatile int counter = 0;
@@ -33,6 +30,11 @@ void initTcb(){
 
 	mainTcb.name = "main_thread";
 	mainTcb.sp = 0;
+	taskOneTcb.name = "thread #1";
+	taskOneTcb.sp = (uint32_t)&taskOneStack[1028];
+	CpuContext *cc = (CpuContext*)(((uint32_t)&taskOneStack[1028]) - sizeof(CpuContext));
+	taskOneTcb.sp = (uint32_t)cc;
+
 
 	cc->R4 =0x4444;
 	cc->R5 =0x5555;
@@ -50,12 +52,6 @@ void initTcb(){
 	cc->PC =(uint32_t)taskOne;
 	cc->xPSR =0x1200;
 
-	taskOneTcb.name = "thread #1";
-	taskOneTcb.sp = (uint32_t)cc;
-
-	runningTcb = &mainTcb;
-	readyQueue = linkListNew(&taskOneTcb);
-
-
-
+	runningTcb = &mainTcb;   //mainTCb is on Running Task
+	readyQueue = &taskOneTcb; //TaskOne is in readyQueue prepare task switchinh
 }
