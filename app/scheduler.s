@@ -37,16 +37,17 @@ waitForTaskSwitch:
 
 SysTick_Handler:
   	push  {r4-r11}          //1. push all necessary register
-  	ldr   r4, =runningTcb   //2. a)load runningTcb to r4
-    ldr   r4, [r4]          //   b)point r4 address to running Tcb
-  	str   sp, [r4, #TCB_SP] //3. store current SP into runningTCB.sp
+  	ldr   r4, =runningTcb   //2. a)load runningTcb to r4 ( running TCb contain mainTcb)
+    ldr   r4, [r4]          //   b)load r4 address to running Tcb
+  	str   sp, [r4, #TCB_SP] //3. store current SP to runningTCB.sp
   	push  {lr}         		//4. save current register
- 	ldr   r0, =readyQueue   //5. a)load readyQueue into r0
- 	bl    returnHead        //   b)returnHead from readyQueue, which is TaskOne
- 	mov   r5, r0            //   c)mov tasKOne into r5
+ 	ldr   r0, =readyQueue   //5. a)load readyQueue to r0
+ 	bl    returnHead        //   b)return TaskOne from readQueue ( taskOne is head of readyQueue)
+ 	mov   r5, r0            //   c)move tasKOne to r5
   	ldr	  r1, =runningTcb	//6. a)load runningTcb to r1
-    str	  r0, [r1]		    //   b)point the runningTcb addres to TaskOne
-    mov	  r1, r4		    //7. a)r4 contained runningTcb
+    str	  r0, [r1]		    //   b)store TaskOne to running Tcb address (taskOne is point to runningTcb address)
+    ldr		r0,	=readyQueue	//   c)load readyQueeue to r0 
+    mov	  r1, r4		    //7. a) construct a runningTCb ( r1 and r4 both are part of runningTcb)
     bl	  addDataToTail     //   b)store mainTcb into readyQueue
     pop	  {lr}              //8. get back the register
     ldr	  sp, [r5, #TCB.SP]	//9. load current  to taskOneTcb.sp
